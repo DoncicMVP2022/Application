@@ -1,11 +1,8 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views import View
 from django.contrib.auth import authenticate, login, logout
-from .forms import CreateUserForm, LoginForm
+from .forms import CreateUserForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user
 from tables.models import Specialist
 

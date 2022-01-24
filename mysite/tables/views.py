@@ -1,15 +1,9 @@
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .forms import TaskTableForm, SpecialistForm, ProjectsForm
 from .models import Task, Projects, Specialist
-from django.forms import inlineformset_factory
 from .filters import ProjectFilter
 from django.contrib.auth.decorators import login_required
 from .decorators import allowed_users
-# class MyTableView(SingleTableView):
-#     model = Task
-#     table_class = MyTableTask
-#     template_name = "tables/dashboard.html"
 
 
 @login_required(login_url='login')
@@ -33,17 +27,6 @@ def Dashboard(request, pk_task):
     return render(request, 'tables/dashboard.html', context)
 
 
-# @login_required(login_url='login')
-# def TaskView(request):
-#     projects = Projects.objects.all()
-#     total_projects = projects.count()
-#     total_to_do_projects = projects.filter(project_status="To do").count()
-#     total_close_projects = projects.filter(project_status="Done").count()
-#     context = {'projects': projects, 'total_projects': total_projects, 'total_to_do_projects':
-#         total_to_do_projects, 'total_close_projects': total_close_projects}
-#     return render(request, 'tables/task.html', context)
-
-
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin', 'teamlead'])
 def SpecialistListView(request):
@@ -64,7 +47,6 @@ def DeleteSpecialist(request, pk):
 
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin', 'teamlead'])
 def CooperatorView(request, pk_test):
     cooperator = Specialist.objects.get(id=pk_test)
     projects = Projects.objects.filter()
@@ -77,6 +59,8 @@ def CooperatorView(request, pk_test):
     return render(request, 'tables/cooperator.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin, teamlead'])
 def UpdateSpecialist(request, pk):
     specialist = Specialist.objects.get(id=pk)
     form = SpecialistForm()
@@ -87,6 +71,7 @@ def UpdateSpecialist(request, pk):
             return redirect('home')
     context = {'form': form, 'specialist': specialist}
     return render(request, 'tables/.html', context)
+
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin', 'teamlead'])
