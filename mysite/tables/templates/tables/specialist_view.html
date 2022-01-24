@@ -1,0 +1,45 @@
+{%  extends 'main/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Specialist</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Email</th>
+
+							<th>Remove</th>
+						</tr>
+
+						{% for specialist in specialists %}
+							<tr>
+								<td><a class="btn btn-sm btn-info"
+							   href="{%url 'cooperator' specialist.id%}">View</a></td>
+
+								<td>{{specialist.name}}</td>
+								<td>{{specialist.user.email}}</td>
+
+
+							<td><a class="btn btn-sm btn-danger"
+							   href="{%url 'delete_specialist' specialist.id%}">
+								Delete
+							</a></td>
+							</tr>
+						{% endfor %}
+
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}

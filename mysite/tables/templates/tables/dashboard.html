@@ -1,0 +1,128 @@
+{% extends 'main/main.html' %}
+
+
+{% block content %}
+    {%include 'tables/status.html'%}
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Specialist</h5>
+		<hr>
+		{%if group == 'teamlead' or group == 'admin'%}
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Specialist</th>
+					<th>Email</th>
+				</tr>
+
+					{%for specialist in specialists%}
+				<tr>
+						<td><a class="btn btn-sm btn-info"
+							   href="{%url 'cooperator' specialist.id%}">View</a></td>
+						<td>{{specialist.name}}</td>
+						<td>{{specialist.email}}</td>
+
+				</tr>
+					{%endfor%}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Tasks</h5>
+		<hr>
+		<div class="card card-body">
+
+			<a class="btn btn-primary  btn-sm btn-block"
+			   href="{% url 'create_task' projects.id%}">Create
+				Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Task</th>
+					<th>Condition</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+					<tr>
+					{%for i in task%}
+						<td>{{i.name}}</td>
+						<td>{{i.description}}</td>
+						<td>{{i.task_status}}</td>
+
+						<td>
+							<a class="btn btn-sm btn-warning"
+							   href="{% url 'update_task' i.id %}">
+							Update
+							</a>
+						</td>
+						<td>
+							<a class="btn btn-sm btn-danger"
+							   href="{% url 'delete_task' i.id %}">
+								Delete
+							</a>
+						</td>
+						</tr>
+					{%endfor%}
+			</table>
+
+			{%else%}
+			<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+
+					<th>Specialist</th>
+					<th>Email</th>
+				</tr>
+
+					{%for specialist in specialists%}
+				<tr>
+
+						<td>{{specialist.name}}</td>
+						<td>{{specialist.email}}</td>
+
+				</tr>
+					{%endfor%}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Tasks</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Task</th>
+					<th>Condition</th>
+					<th>Status</th>
+					<th>Update</th>
+
+				</tr>
+					<tr>
+					{%for i in task%}
+						<td>{{i.name}}</td>
+						<td>{{i.description}}</td>
+						<td>{{i.task_status}}</td>
+
+						<td>
+							<a class="btn btn-sm btn-warning"
+							   href="{% url 'update_task' i.id %}">
+							Update
+							</a>
+						</td>
+
+						</tr>
+					{%endfor%}
+			</table>
+			{%endif%}
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

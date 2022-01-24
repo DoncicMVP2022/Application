@@ -1,0 +1,44 @@
+
+#logo{
+	}
+
+	body{
+		background-color: #ebeff5;
+	}
+
+
+	#total-orders{
+		background-color: #4cb4c7;
+	}
+
+
+	#orders-delivered{
+		background-color: #7abecc;
+	}
+
+	#orders-pending{
+		background-color: #7CD1C0;
+	}
+
+
+
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+ header{
+      flex: 0 0 auto;
+  }
+
+ .content{
+	 flex: 1 0 auto;
+}
+
+ .footer{
+    flex: 0 0 auto;
+  }
