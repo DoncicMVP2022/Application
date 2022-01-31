@@ -70,7 +70,7 @@ def UpdateSpecialist(request, pk):
             form.save()
             return redirect('home')
     context = {'form': form, 'specialist': specialist}
-    return render(request, 'tables/.html', context)
+    return render(request, 'tables/specialist_update.html', context)
 
 
 @login_required(login_url='login')
