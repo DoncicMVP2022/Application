@@ -10,10 +10,10 @@
 
 			<p>Are you sure you want to delete "{{item}}"?</p>
 
-			<form action="{% url 'delete_project' item.id  %}" method="POST">
+			<form action="{%url 'delete_project' item.id%}" method="POST">
 
 				{% csrf_token %}
-				<a class="btn btn-warning" href="{% url 'task' %}">Cancel</a>
+				<a class="btn btn-warning" href="{%url 'task'%}">Cancel</a>
 
 				<input class="btn btn-danger" type="submit" name="Confirm" value="Confirm">
 			</form>
