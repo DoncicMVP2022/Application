@@ -144,6 +144,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -152,3 +153,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'daniilzuev216@gmail.com'
 EMAIL_HOST_PASSWORD = 'bnm789654'
+
+
+ADMINS = [
+    ('Daniil', 'daniilzuev2020@gmail.com')
+     ]
