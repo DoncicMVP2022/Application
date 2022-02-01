@@ -36,7 +36,7 @@ def SpecialistListView(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin, teamlead'])
+# @allowed_users(allowed_roles=['admin, teamlead'])
 def DeleteSpecialist(request, pk):
     specialist = Specialist.objects.get(id=pk)
     if request.method == "POST":
