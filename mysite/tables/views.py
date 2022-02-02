@@ -163,6 +163,7 @@ def DeleteTableTask(request, pk):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['specialist'])
 def userPage(request):
+    all_projects = Projects.objects.all()
     projects = request.user.specialist.projects_set.all()
     total_to_do_projects = projects.filter(project_status="To do").count()
     total_close_projects = projects.filter(project_status="Done").count()
