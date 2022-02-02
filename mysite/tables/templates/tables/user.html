@@ -34,4 +34,34 @@
 	</div>
 </div>
 
+<div class="col-md">
+
+		<div class="card card-body">
+			<table class="table table-sm">
+				<h5>Tasks</h5>
+				<tr>
+					<th></th>
+					<th>Product</th>
+					<th>Note</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+				</tr>
+
+				{% for project in all_projects %}
+
+				<tr>
+					<td><a class="btn btn-sm btn-info"
+							   href="{%url 'dashboard' project.id%}">View</a></td>
+					<td>{{project.name}}</td>
+					<td>{{project.description}}</td>
+					<td>{{project.data_created}}</td>
+					<td>{{project.project_status}}</td>
+				</tr>
+
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
 {% endblock content %}

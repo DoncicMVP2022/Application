@@ -171,7 +171,8 @@ def userPage(request):
     context = {'projects': projects,
                'total_projects': total_project,
                'total_to_do_projects': total_to_do_projects,
-               'total_close_projects': total_close_projects
+               'total_close_projects': total_close_projects,
+               'all_projects': all_projects
                }
     return render(request, 'tables/user.html', context)
 
